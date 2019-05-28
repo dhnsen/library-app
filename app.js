@@ -9,7 +9,7 @@ const app = express();
 app.use(morgan('combined'));
 
 app.get('/', function(req, res){
-    res.send('test from express.get');
+    res.sendFile(__dirname + '\\views\\index.html');
 });
 
 app.listen(3000, function(){
