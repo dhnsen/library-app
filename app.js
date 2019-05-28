@@ -8,10 +8,10 @@ const app = express();
 
 app.use(morgan('combined'));
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '\\views\\index.html');
+app.get('/', function (req, res) {
+    res.sendfile(__dirname + '\\views\\index.html');
 });
 
-app.listen(3000, function(){
-    debug(chalk.green('listening on port 3000. ctrl+c to stop'));
+app.listen(3000, function () {
+    debug('listening on port ' + chalk.green('3000'));
 });
