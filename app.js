@@ -17,5 +17,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000, function () {
-    debug('listening on port ' + chalk.green('3000'));
+    debug('listening on port 3000. ' + chalk.green('press ctrl+c to stop'));
 });
