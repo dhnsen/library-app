@@ -21,5 +21,10 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": ["node_modules/**/node_modules"], 
+    "delay": "2500"
   }
 }
