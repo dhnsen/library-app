@@ -19,7 +19,7 @@ app.set('views', path.join('public', 'src', 'views'));
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-    res.render('index');
+    res.render('index', { title: 'MyLibrary' });
 });
 
 app.listen(3000, function () {
