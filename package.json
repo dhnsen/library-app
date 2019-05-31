@@ -17,14 +17,17 @@
     "express": "4.17.0",
     "jquery": "^3.4.1",
     "morgan": "^1.9.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
   },
   "nodemonConfig": {
     "restartable": "rs",
-    "ignore": ["node_modules/**/node_modules"], 
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
     "delay": "2500",
     "env": {
       "NODE_ENV": "development",
