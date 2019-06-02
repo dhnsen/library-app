@@ -19,7 +19,9 @@ app.set('views', path.join('src', 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    res.render('index', { title: 'My Library', list: ['a', 'b'] });
+    res.render('index', { 
+        title: 'My Library', 
+        nav: ['books', 'authors'] });
 });
 
 app.listen(3000, function () {

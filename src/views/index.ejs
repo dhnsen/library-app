@@ -26,8 +26,14 @@
       <a href="/" class="navbar-brand">Home</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
+      <p>item</p>
       <ul class="nav navbar-nav">
         
+        <%for(let i=0; i<nav.length; i++) {%>
+          <li>
+            <a href="#"><%=nav[i]%></a>
+          </li>
+          <%}%>
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li class="dropdown">
@@ -47,9 +53,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1><%=title%>
+        <h2><%=title%>
           <p class="lead"></p>
-        </h1>
+        </h2>
       </div>
       <div class="col-md-5">
         <div class="well well-lg"> 
