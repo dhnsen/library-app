@@ -15,7 +15,7 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
-app.set('views', path.join('public', 'src', 'views'));
+app.set('views', path.join('src', 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
