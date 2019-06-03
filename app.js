@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+const bookRouter = express.Router();
 
 
 app.use(morgan('combined'));
@@ -18,12 +18,42 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 app.set('views', path.join('src', 'views'));
 app.set('view engine', 'ejs');
 
+const books = [
+    {
+        title: "Harry Potter and the Sorceror's Stone",
+        genre: 'Fantasy',
+        author: 'JK Rowling',
+        read: false
+    },
+    {
+        title: "War and Peace",
+        genre: 'Historical Ficiton',
+        author: 'Leo Tolstoy',
+        read: false
+    }
+]
+
+bookRouter.route('/')
+    .get( function (req, res) {
+        res.render('books', 
+        {
+            title: 'Library',
+            nav: [{ link: '/books', title: 'Books' },
+            { link: '/authors', title: 'Authors' }],
+            books
+        }
+        );
+    });
+
+app.use('/books', bookRouter);
+
 app.get('/', function (req, res) {
     res.render(
-        'index', 
-        { 
-            title: 'Library', 
-            nav: ['books', 'authors'] 
+        'index',
+        {
+            title: 'Library',
+            nav: [{ link: '/books', title: 'Books' },
+            { link: '/authors', title: 'Authors' }]
         }
     );
 });
