@@ -34,15 +34,20 @@ const books = [
 ]
 
 bookRouter.route('/')
-    .get( function (req, res) {
-        res.render('books', 
-        {
-            title: 'Library',
-            nav: [{ link: '/books', title: 'Books' },
-            { link: '/authors', title: 'Authors' }],
-            books
-        }
+    .get(function (req, res) {
+        res.render('books',
+            {
+                title: 'Library',
+                nav: [{ link: '/books', title: 'Books' },
+                { link: '/authors', title: 'Authors' }],
+                books
+            }
         );
+    });
+
+bookRouter.route('/single')
+    .get(function (req, res) {
+        res.send("Hello from single book");
     });
 
 app.use('/books', bookRouter);
