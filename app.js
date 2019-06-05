@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const bookRouter = require(path.join('src', 'routes', 'bookRoutes'));
+const bookRouter = require(".\\src\\routes\\bookRoutes");
 
 
 app.use(morgan('combined'));
@@ -19,9 +19,8 @@ app.set('views', path.join('src', 'views'));
 app.set('view engine', 'ejs');
 
 
+
 app.use('/books', bookRouter);
-
-
 
 app.get('/', function (req, res) {
     res.render(
