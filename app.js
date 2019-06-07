@@ -7,7 +7,9 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const bookRouter = require(path.join(__dirname, 'src', 'routes', 'bookRoutes'));
+const nav = [{ link: '/books', title: 'Books' },
+{ link: '/authors', title: 'Authors' }]
+const bookRouter = require(path.join(__dirname, 'src', 'routes', 'bookRoutes')(nav));
 
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
