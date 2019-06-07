@@ -1,23 +1,22 @@
 const express = require('express');
-
-const books = [
-    {
-        title: "Harry Potter and the Sorceror's Stone",
-        genre: 'Fantasy',
-        author: 'JK Rowling',
-        read: false
-    },
-    {
-        title: "War and Peace",
-        genre: 'Historical Ficiton',
-        author: 'Leo Tolstoy',
-        read: false
-    }
-]
-
 const bookRouter = express.Router();
 
-bookRouter.route('/')
+function router(){
+    const books = [
+        {
+            title: "Harry Potter and the Sorceror's Stone",
+            genre: 'Fantasy',
+            author: 'JK Rowling',
+            read: false
+        },
+        {
+            title: "War and Peace",
+            genre: 'Historical Ficiton',
+            author: 'Leo Tolstoy',
+            read: false
+        }
+    ]
+    bookRouter.route('/')
     .get(function (req, res) {
         res.render('bookListView',
             {
@@ -29,8 +28,7 @@ bookRouter.route('/')
         );
     });
 
-bookRouter.route('/:id')
-    .get(function (req, res) {
+    bookRouter.route('/:id').get(function (req, res) {
         const { id } = req.params;
         res.render('bookView',
         {
@@ -41,5 +39,12 @@ bookRouter.route('/:id')
         }
     );
     });
+    return bookRouter;
+}
+
+
+
+
+
 
     module.exports = bookRouter;
