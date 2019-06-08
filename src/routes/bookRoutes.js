@@ -1,7 +1,7 @@
 const express = require('express');
 const bookRouter = express.Router();
 
-function router(nav){
+function router(nav) {
     const books = [
         {
             title: "Harry Potter and the Sorceror's Stone",
@@ -16,29 +16,29 @@ function router(nav){
             read: false
         }
     ]
-    
+
     bookRouter.route('/')
-    .get(function (req, res) {
-        res.render('bookListView',
-            {
-                title: 'Library',
-                nav,
-                books
-            }
-        );
-    });
+        .get(function (req, res) {
+            res.render('bookListView',
+                {
+                    title: 'Library',
+                    nav,
+                    books
+                }
+            );
+        });
 
     bookRouter.route('/:id').get(function (req, res) {
         const { id } = req.params;
         res.render('bookView',
-        {
-            title: 'Library',
-            nav,
-            book: books[id]
-        }
-    );
+            {
+                title: 'Library',
+                nav,
+                book: books[id]
+            }
+        );
     });
     return bookRouter;
 }
 
-    module.exports = router;
+module.exports = router;
