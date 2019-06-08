@@ -1,7 +1,7 @@
 const express = require('express');
 const bookRouter = express.Router();
 
-function router(){
+function router(nav){
     const books = [
         {
             title: "Harry Potter and the Sorceror's Stone",
@@ -16,13 +16,13 @@ function router(){
             read: false
         }
     ]
+    
     bookRouter.route('/')
     .get(function (req, res) {
         res.render('bookListView',
             {
                 title: 'Library',
-                nav: [{ link: '/books', title: 'Books' },
-                { link: '/authors', title: 'Authors' }],
+                nav,
                 books
             }
         );
@@ -33,18 +33,12 @@ function router(){
         res.render('bookView',
         {
             title: 'Library',
-            nav: [{ link: '/books', title: 'Books' },
-            { link: '/authors', title: 'Authors' }],
+            nav,
             book: books[id]
         }
     );
     });
     return bookRouter;
 }
-
-
-
-
-
 
     module.exports = bookRouter;
