@@ -12,6 +12,8 @@ const port = process.env.PORT || 3000;
 // here is asp.net connection string:
 // "Data Source=SQL5018.site4now.net;Initial Catalog=DB_A3D314_library;User Id=DB_A3D314_library_admin;Password=LIBRARY2019;"
 
+// by the way, make a note that asp.net hosting expires in 6 months!...
+
 
 const nav = [{ link: '/books', title: 'Book' },
 { link: '/authors', title: 'Author' }]
