@@ -7,6 +7,12 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Going to add MS SQL Database access here and use "adminRoutes"
+// need to figure out connection string for express
+// here is asp.net connection string:
+// "Data Source=SQL5018.site4now.net;Initial Catalog=DB_A3D314_library;User Id=DB_A3D314_library_admin;Password=LIBRARY2019;"
+
+
 const nav = [{ link: '/books', title: 'Book' },
 { link: '/authors', title: 'Author' }]
 const bookRouter = 
