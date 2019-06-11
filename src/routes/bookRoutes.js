@@ -21,23 +21,18 @@ function router(nav) {
 
     bookRouter.route('/')
         .get(function (req, res) {
-
-
             (async function query() {
                 const request = new sql.Request();
                 const result = await request.query('select * from books');
-                debug(results);
+                debug(result);
                 res.render('bookListView',
                     {
                         title: 'Library',
                         nav,
-                        books: results.recordset
+                        books: result.recordset
                     }
                 );
-
-            }())
-
-
+            }());
         });
 
     bookRouter.route('/:id').get(function (req, res) {
