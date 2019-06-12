@@ -35,6 +35,10 @@ function router(nav) {
             }());
         });
 
+// many route is set up
+//need to decide whether to select a single from db
+//or grab all and programatically select as in an ORM 
+
     bookRouter.route('/:id').get(function (req, res) {
         const { id } = req.params;
         res.render('bookView',
