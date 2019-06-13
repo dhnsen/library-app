@@ -8,16 +8,14 @@ const sql = require('mssql');
 const app = express();
 const port = process.env.PORT || 3000;
 
-
-
 const config = {
     user: 'DB_A3D314_library_admin',
     password: 'LIBRARY2019',
-    server: 'SQL5018.site4now.net', 
+    server: 'SQL5018.site4now.net',
     database: 'DB_A3D314_library',
- 
+
     options: {
-        encrypt: true 
+        encrypt: true
     }
 };
 
@@ -25,7 +23,7 @@ sql.connect(config).catch((err) => debug(err));
 
 const nav = [{ link: '/books', title: 'Book' },
 { link: '/authors', title: 'Author' }]
-const bookRouter = 
+const bookRouter =
     require(path.join(__dirname, 'src', 'routes', 'bookRoutes'))(nav);
 
 app.use(morgan('combined'));
