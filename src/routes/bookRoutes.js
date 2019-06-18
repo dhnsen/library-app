@@ -38,14 +38,22 @@ function router(nav) {
 
 
     bookRouter.route('/:id').get(function (req, res) {
-        const { id } = req.params;
-        res.render('bookView',
-            {
-                title: 'Library',
-                nav,
-                book: books[id]
-            }
-        );
+        (async function query() {
+            const { id } = req.params;
+            const request = new sql.Request();
+            const result = await request
+            .input('id', sql.Int, id)
+            .query('select * from books where id = @id');
+            debug(result);
+            res.render('bookView',
+                {
+                    title: 'Library',
+                    nav,
+                    book: result.recordset[0]
+                }
+            );
+        }());
+
     });
     return bookRouter;
 }
