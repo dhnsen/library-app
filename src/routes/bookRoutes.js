@@ -37,28 +37,24 @@ function router(nav) {
 
 
 
-    bookRouter.route('/:id')
-        .all((req, res, next) => {
-            (async function query() {
-                const { id } = req.params;
-                const request = new sql.Request();
-                const result = await request
-                    .input('id', sql.Int, id)
-                    .query('select * from books where id = @id');
-                req.book = result.recordset[0];
-                next();
-            }());
-        })
-        .get(function (req, res) {
+    bookRouter.route('/:id').get(function (req, res) {
+        (async function query() {
+            const { id } = req.params;
+            const request = new sql.Request();
+            const result = await request
+            .input('id', sql.Int, id)
+            .query('select * from books where id = @id');
+            debug(result);
             res.render('bookView',
                 {
                     title: 'Library',
                     nav,
-                    book: req.book
+                    book: result.recordset[0]
                 }
             );
+        }());
 
-        });
+    });
     return bookRouter;
 }
 
