@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const config = {
     user: 'DB_A3D314_library_admin',
     password: 'LIBRARY2019',
@@ -23,6 +24,8 @@ const config = {
 
 sql.connect(config).catch((err) => debug(err));
 
+=======
+>>>>>>> parent of 486be15... set up MS SQL database and put a note in app.js with connection string info
 =======
 >>>>>>> parent of 486be15... set up MS SQL database and put a note in app.js with connection string info
 =======
