@@ -53,30 +53,46 @@ function router(nav) {
     }];
   bookRouter.route('/')
     .get((req, res) => {
-      res.render(
-        'bookListView',
-        {
-          nav,
-          title: 'Library',
-          books
+      const url = 'mongodb://localhost:27017';
+      const dbName = 'libraryApp';
+
+      (async function mongo() {
+        let client;
+        try {
+          client = await MongoClient.connect(url);
+          debug('connected to DB server');
+
+          const db = client.db(dbName);
+          const response = await db.collection('books')
+          res.render(
+            'bookListView',
+            {
+              nav,
+              title: 'Library',
+              books
+            }
+          );
+        } catch (err) {
+          debug(err.stack);
         }
-      );
+        client.close();
+      });
     });
+      bookRouter.route('/:id')
+        .get((req, res) => {
+          const { id } = req.params;
+          res.render(
+            'bookView',
+            {
+              nav,
+              title: 'Library',
+              book: books[id]
+            }
+          );
+        });
+      return bookRouter;
+    }
 
-  bookRouter.route('/:id')
-    .get((req, res) => {
-      const { id } = req.params;
-      res.render(
-        'bookView',
-        {
-          nav,
-          title: 'Library',
-          book: books[id]
-        }
-      );
-    });
-  return bookRouter;
-}
 
 
-module.exports = router;
+  module.exports = router;
