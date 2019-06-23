@@ -1,5 +1,7 @@
 const express = require('express');
 const bookRouter = express.Router();
+const debug = require('debug')('app:bookRoutes');
+const { MongoClient } = require('mongodb');
 
 function router(nav) {
   const books = [
@@ -60,10 +62,12 @@ function router(nav) {
         let client;
         try {
           client = await MongoClient.connect(url);
-          debug('connected to DB server');
+          debug('connected to DB server on books');
 
           const db = client.db(dbName);
-          const response = await db.collection('books')
+          const col = await db.collection('books');
+
+          const books = col.find().toArray();
           res.render(
             'bookListView',
             {
@@ -76,23 +80,23 @@ function router(nav) {
           debug(err.stack);
         }
         client.close();
-      });
+      }());
     });
-      bookRouter.route('/:id')
-        .get((req, res) => {
-          const { id } = req.params;
-          res.render(
-            'bookView',
-            {
-              nav,
-              title: 'Library',
-              book: books[id]
-            }
-          );
-        });
-      return bookRouter;
-    }
+  bookRouter.route('/:id')
+    .get((req, res) => {
+      const { id } = req.params;
+      res.render(
+        'bookView',
+        {
+          nav,
+          title: 'Library',
+          book: books[id]
+        }
+      );
+    });
+  return bookRouter;
+}
 
 
 
-  module.exports = router;
+module.exports = router;
