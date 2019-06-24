@@ -51,19 +51,21 @@ function router(nav) {
           const db = client.db(dbName);
           const col = await db.collection('books');
 
-          const book = col.findOne({ _id: new ObjectID(id) });
+          const book = await col.findOne({ _id: new ObjectID(id) });
+          debug(book);
+          res.render(
+            'bookView',
+            {
+              nav,
+              title: 'Library',
+              book
+            }
+          );
         } catch (err) {
           debug(err.stack);
         }
       }());
-      res.render(
-        'bookView',
-        {
-          nav,
-          title: 'Library',
-          book: books[id]
-        }
-      );
+      
     });
   return bookRouter;
 }
