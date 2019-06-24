@@ -4,7 +4,7 @@ const debug = require('debug')('app:bookRoutes');
 const { MongoClient } = require('mongodb');
 
 function router(nav) {
-  
+
   bookRouter.route('/')
     .get((req, res) => {
       const url = 'mongodb://localhost:27017';
@@ -28,7 +28,7 @@ function router(nav) {
               books
             }
           );
-          
+
         } catch (err) {
           debug(err.stack);
         }
