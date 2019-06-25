@@ -18,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ secret: 'library' }));
 
-require('.\\src\\config\\passport.js');
+// eslint-disable-next-line import/no-dynamic-require
+require(path.join(__dirname, '/src/config/passport.js'));
 
 app.use(express.static(path.join(__dirname, '/public/')));
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
