@@ -1,10 +1,11 @@
+/* eslint-disable linebreak-style */
 const express = require('express');
+
 const bookRouter = express.Router();
 const debug = require('debug')('app:bookRoutes');
 const { MongoClient, ObjectID } = require('mongodb');
 
 function router(nav) {
-
   bookRouter.route('/')
     .get((req, res) => {
       const url = 'mongodb://localhost:27017';
@@ -25,10 +26,9 @@ function router(nav) {
             {
               nav,
               title: 'Library',
-              books
-            }
+              books,
+            },
           );
-
         } catch (err) {
           debug(err.stack);
         }
@@ -58,18 +58,16 @@ function router(nav) {
             {
               nav,
               title: 'Library',
-              book
-            }
+              book,
+            },
           );
         } catch (err) {
           debug(err.stack);
         }
       }());
-      
     });
   return bookRouter;
 }
-
 
 
 module.exports = router;

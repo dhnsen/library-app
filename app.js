@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const express = require('express');
 const chalk = require('chalk');
 const debug = require('debug')('app');
@@ -18,7 +19,7 @@ app.set('view engine', 'ejs');
 
 const nav = [
   { link: '/books', title: 'Book' },
-  { link: '/authors', title: 'Author' }
+  { link: '/authors', title: 'Author' },
 ];
 
 const bookRouter = require('./src/routes/bookRoutes')(nav);
@@ -32,9 +33,9 @@ app.get('/', (req, res) => {
     'index',
     {
       nav: [{ link: '/books', title: 'Books' },
-      { link: '/authors', title: 'Authors' }],
-      title: 'Library'
-    }
+        { link: '/authors', title: 'Authors' }],
+      title: 'Library',
+    },
   );
 });
 
