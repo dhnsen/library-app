@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable indent */
-// eslint-disable-next-line import/no-dynamic-require
 const path = require('path');
 
-require(path.join(__dirname, 'strategies', 'local.strategy'));
+// eslint-disable-next-line import/no-dynamic-require
+require(path.join(__dirname, 'strategies/local.strategy'));
 
 const passport = require('passport');
 
