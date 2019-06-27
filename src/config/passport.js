@@ -18,6 +18,4 @@ module.exports = function passportConfig(app) {
     passport.deserializeUser((user, done) => {
         done(null, user);
     });
-
-    
 };
