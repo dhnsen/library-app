@@ -5,7 +5,7 @@ const path = require('path');
 const passport = require('passport');
 
 // eslint-disable-next-line import/no-dynamic-require
-require(path.join(__dirname, 'strategies/local.strategy'));
+require(path.join(__dirname, 'strategies/local.strategy'))();
 
 module.exports = function passportConfig(app) {
     app.use(passport.initialize());
