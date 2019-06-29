@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
 const debug = require('debug')('app:authRoutes');
-const { MongoClient, ObjectID } = require('mongodb');
+const { MongoClient } = require('mongodb');
 const passport = require('passport');
 
 const authRouter = express.Router();
@@ -46,6 +46,13 @@ function router(nav) {
       failureRedirect: '/',
     }));
   authRouter.route('/profile')
+    .all((req, res, next) => {
+      if (req.user) {
+        next();
+      } else {
+        res.redirect('/');
+      }
+    })
     .get((req, res) => {
       res.json(req.user);
     });
